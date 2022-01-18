@@ -143,32 +143,32 @@ def login_verify():
         Label(login_screen, text="Login Success", fg="green", font=("calibri", 11)).pack()
         global splash
         splash = Tk()
-        splash.geometry("500x500")
+        splash.geometry("250x250")
         splash.title("Messenger")
-        Button(splash, text="Friends list", height="2", width="30", command = Friends_list).pack()
-        Label(splash, text="").pack()
-        Button(splash, text="Add friend", height="2", width="30", command=add_friend).pack()
-        Label(splash, text="").pack()
-        Button(splash, text="Friends requests", height="2", width="30", command=friend_request).pack()
-        Label(splash, text="").pack()
+        # Button(splash, text="Friends list", height="2", width="30", command = Friends_list).pack()
+        # Label(splash, text="").pack()
+        # Button(splash, text="Add friend", height="2", width="30", command=add_friend).pack()
+        # Label(splash, text="").pack()
+        # Button(splash, text="Friends requests", height="2", width="30", command=friend_request).pack()
+        # Label(splash, text="").pack()
         Button(splash, text="Users online", height="2", width="30", command=users_online).pack()
         _thread.start_new_thread(recv_messages, ("msg_window",))      
     else:
         Label(login_screen, text="Wrong username or password!", fg="red", font=("calibri", 11)).pack()
     msg_from_server = ""
 
-def Friends_list():
-    global Friends_list_screen
-    Friends_list_screen = Toplevel(splash)
-    Friends_list_screen.geometry("300x250")
-    Friends_list_screen.title("Friends list")
-    Label(Friends_list_screen, text="Click to chat", width="300", height="2", font=("Calibri", 13)).pack()
-    Label(Friends_list_screen, text="").pack()
-    Button(Friends_list_screen, text="Friend1", height="2", width="30", command = Friends_list).pack()
-    Label(Friends_list_screen, text="").pack()
-    Button(Friends_list_screen, text="Friend2", height="2", width="30", command=Friends_list).pack()
-    Label(Friends_list_screen, text="").pack()
-    Button(Friends_list_screen, text="Friend3", height="2", width="30", command=Friends_list).pack()
+# def Friends_list():
+#     global Friends_list_screen
+#     Friends_list_screen = Toplevel(splash)
+#     Friends_list_screen.geometry("300x250")
+#     Friends_list_screen.title("Friends list")
+#     Label(Friends_list_screen, text="Click to chat", width="300", height="2", font=("Calibri", 13)).pack()
+#     Label(Friends_list_screen, text="").pack()
+#     Button(Friends_list_screen, text="Friend1", height="2", width="30", command = Friends_list).pack()
+#     Label(Friends_list_screen, text="").pack()
+#     Button(Friends_list_screen, text="Friend2", height="2", width="30", command=Friends_list).pack()
+#     Label(Friends_list_screen, text="").pack()
+#     Button(Friends_list_screen, text="Friend3", height="2", width="30", command=Friends_list).pack()
 
 def users_online():
     global online_users_screen
@@ -179,7 +179,7 @@ def users_online():
     data=s.recv(1024)
     msg_from_server = data.decode("utf-8")
     online_users_screen = Toplevel(splash)
-    online_users_screen.geometry("300x250")
+    online_users_screen.geometry("300x750")
     online_users_screen.title("Users online: " + str(int(list(msg_from_server)[0]) - 1))
     online_users = int(list(msg_from_server)[0])
     print(online_users)
@@ -227,29 +227,29 @@ def send_message(temp):
         msg_text_entry.delete(0, END)
 
 
-def add_friend():
-    global add_friend_screen
-    nickname = StringVar()
-    add_friend_screen = Toplevel(splash)
-    add_friend_screen.geometry("300x250")
-    add_friend_screen.title("Add friend")
-    Label(add_friend_screen, text="Enter friend's nickname", bg="blue", width="300", height="2", font=("Calibri", 13)).pack()
-    Label(add_friend_screen, text="").pack()
-    nickname_entry = Entry(add_friend_screen, textvariable=nickname)
-    nickname_entry.pack()
-    Label(add_friend_screen, text="").pack()
-    Button(add_friend_screen, text="Add", height="2", width="30", command=add_friend_destroy).pack()
+# def add_friend():
+#     global add_friend_screen
+#     nickname = StringVar()
+#     add_friend_screen = Toplevel(splash)
+#     add_friend_screen.geometry("300x250")
+#     add_friend_screen.title("Add friend")
+#     Label(add_friend_screen, text="Enter friend's nickname", bg="blue", width="300", height="2", font=("Calibri", 13)).pack()
+#     Label(add_friend_screen, text="").pack()
+#     nickname_entry = Entry(add_friend_screen, textvariable=nickname)
+#     nickname_entry.pack()
+#     Label(add_friend_screen, text="").pack()
+#     Button(add_friend_screen, text="Add", height="2", width="30", command=add_friend_destroy).pack()
 
-def add_friend_destroy():
-    #wyślij zaproszenie do znajomych na serwer
-    add_friend_screen.destroy()
+# def add_friend_destroy():
+#     #wyślij zaproszenie do znajomych na serwer
+#     add_friend_screen.destroy()
 
-def friend_request():
-    global friend_request_screen
-    nickname = StringVar()
-    friend_request_screen = Toplevel(splash)
-    friend_request_screen.geometry("300x250")
-    friend_request_screen.title("Friend requests")
+# def friend_request():
+#     global friend_request_screen
+#     nickname = StringVar()
+#     friend_request_screen = Toplevel(splash)
+#     friend_request_screen.geometry("300x250")
+#     friend_request_screen.title("Friend requests")
  
 
 def main_account_screen():
